@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hospital</string>
+    <string name="searchBar">جستجو...</string>
+    <string name="introduction">اپلیکیشن بیمارستان ولایت؛ آماده خدمت‌رسانی به شماست.</string>
+    <string name="section">بخش ها</string>
+    <string name="seeAll">نمایش همه</string>
+</resources>
