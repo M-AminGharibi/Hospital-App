@@ -45,6 +45,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation("com.github.bumptech.glide:glide:4.11.0")
 
+
     implementation("com.github.parse-community.Parse-SDK-Android:parse:$parseVersion")
     // for Google login/signup support (optional)
     implementation("com.github.parse-community.Parse-SDK-Android:google:$parseVersion")

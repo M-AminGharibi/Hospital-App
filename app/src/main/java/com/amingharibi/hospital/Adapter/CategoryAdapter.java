@@ -30,6 +30,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
         context = parent.getContext();
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_category, parent, false);
         return new viewholder(inflate);
+
+        
     }
 
     @Override
@@ -41,7 +43,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
     }
 
     public class viewholder extends RecyclerView.ViewHolder {
