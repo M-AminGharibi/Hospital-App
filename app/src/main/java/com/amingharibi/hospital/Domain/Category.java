@@ -4,19 +4,10 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 public class Category {
-    private int Id;
     private ParseFile imagePath;
     private String CategoryName;
 
     public Category() {
-    }
-
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
     }
 
     public ParseFile getImagePath() {
