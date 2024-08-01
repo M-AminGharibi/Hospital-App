@@ -2,6 +2,7 @@ package com.amingharibi.hospital.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.amingharibi.hospital.Adapter.CategoryAdapter;
 import com.amingharibi.hospital.Domain.Category;
+import com.amingharibi.hospital.Domain.DataHolder;
 import com.amingharibi.hospital.databinding.ActivityMainBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -44,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SectionActivity.class);
+                //intent.putExtra("fullList", (Serializable) fullList);
+                //intent.putParcelableArrayListExtra("fullList", (ArrayList<? extends Parcelable>) fullList);
+                //intent.putStringArrayListExtra("fullList", fullList);
+                DataHolder.getInstance().setFullList(fullList);
+
                 startActivity(intent);
             }
         });
