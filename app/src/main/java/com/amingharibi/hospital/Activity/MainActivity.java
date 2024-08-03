@@ -2,7 +2,6 @@ package com.amingharibi.hospital.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -19,7 +18,6 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,18 +44,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SectionActivity.class);
-                //intent.putExtra("fullList", (Serializable) fullList);
-                //intent.putParcelableArrayListExtra("fullList", (ArrayList<? extends Parcelable>) fullList);
-                //intent.putStringArrayListExtra("fullList", fullList);
                 DataHolder.getInstance().setFullList(fullList);
-
                 startActivity(intent);
             }
         });
 
 
     }
-
 
 
     private void initCategoryMain() {
@@ -78,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     limitedList = getLimitedList(fullList, 4);
                     binding.categoryView.setAdapter(new CategoryAdapter(limitedList));
+                    binding.progressBarCategory.setVisibility(View.GONE);
                 } else {
                     // خطا در بازیابی داده‌ها
                     e.printStackTrace();
@@ -85,9 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        binding.progressBarCategory.setVisibility(View.GONE);
     }
-
 
 
     private List<Category> getLimitedList(List<Category> originalList, int limit) {

@@ -18,7 +18,6 @@ import java.util.List;
 public class SectionActivity extends AppCompatActivity {
     ActivitySectionBinding binding;
     List<Category> fullList;
-    CategoryAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +26,10 @@ public class SectionActivity extends AppCompatActivity {
         binding = ActivitySectionBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        Intent intent = getIntent();
+
+
         binding.progressBarSection.setVisibility(View.VISIBLE);
 
-//        fullList = (List<Category>) getIntent().getSerializableExtra("fullList");
-//        fullList = intent.getParcelableArrayListExtra("fullList");
         fullList = DataHolder.getInstance().getFullList();
 
         initCategorySection();
@@ -39,15 +37,14 @@ public class SectionActivity extends AppCompatActivity {
 
     }
 
-
     public void initCategorySection() {
 
-
         binding.sectionView.setLayoutManager(new GridLayoutManager(this, 2));
-        adapter = new CategoryAdapter(fullList);
-        binding.sectionView.setAdapter(adapter);
+        binding.sectionView.setAdapter(new CategoryAdapter(fullList));
+        if (fullList != null) {
+            binding.progressBarSection.setVisibility(View.GONE);
+        }
 
 
-        binding.progressBarSection.setVisibility(View.GONE);
     }
 }
