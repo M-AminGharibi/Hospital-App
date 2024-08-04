@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 if (e == null) {
                     // داده‌ها با موفقیت بازیابی شدند
                     for (ParseObject parseCategory : objects) {
+                        Number categoryIdParse = parseCategory.getNumber("CategoryId");
                         ParseFile imagePath = parseCategory.getParseFile("ImagePath");
                         String categoryName = parseCategory.getString("CategoryName");
                         Category category = com.amingharibi.hospital.Domain.Category.fromParseObject(parseCategory);

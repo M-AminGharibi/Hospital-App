@@ -30,6 +30,8 @@ import java.util.List;
 public class BlogActivity extends AppCompatActivity {
     ActivityBlogBinding binding;
     List<Blog> blogList;
+    private int categoryId;
+    private String categoryName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,16 @@ public class BlogActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         blogList = new ArrayList<>();
+
+        getIntentExtra();
         initBlogList();
+    }
+
+    private void getIntentExtra() {
+        categoryId = getIntent().getIntExtra("CategoryId",0);
+      // categoryName = getIntent().getStringExtra("CategoryName");
+
+
     }
 
     private void initBlogList() {
@@ -53,11 +64,15 @@ public class BlogActivity extends AppCompatActivity {
                 if (e == null) {
                     // داده‌ها با موفقیت بازیابی شدند
                     for (ParseObject parseBlog : objects) {
-                        ParseFile imageFile = parseBlog.getParseFile("ImagePath");
-                        String title = parseBlog.getString("Title");
-                        String text = parseBlog.getString("Text");
-                        Blog blog = com.amingharibi.hospital.Domain.Blog.fromParseObject(parseBlog);
-                        blogList.add(blog);
+                        int categoryIdParse = parseBlog.getInt("CategoryId");
+                        if (categoryId == categoryIdParse) {
+                            ParseFile imageFile = parseBlog.getParseFile("ImagePath");
+                            String title = parseBlog.getString("Title");
+                            String text = parseBlog.getString("Text");
+                            Blog blog = com.amingharibi.hospital.Domain.Blog.fromParseObject(parseBlog);
+                            blogList.add(blog);
+                        }
+
                     }
                     binding.blogView.setAdapter(new BlogListAdapter(blogList));
                     binding.progressBarBlog.setVisibility(View.GONE);

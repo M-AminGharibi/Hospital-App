@@ -37,6 +37,7 @@ public class Category {
     public static Category fromParseObject(ParseObject parseObject) {
         Category category = new Category();
         category.setImageFileCat(parseObject.getParseFile("ImagePath"));
+        category.setCategoryId(parseObject.getInt("CategoryId"));
         category.setCategoryName(parseObject.getString("CategoryName"));
         return category;
     }
