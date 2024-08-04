@@ -4,18 +4,26 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 public class Category {
-    private ParseFile imagePath;
+    private int categoryId;
+    private ParseFile imageFileCat;
     private String CategoryName;
 
     public Category() {
     }
-
-    public ParseFile getImagePath() {
-        return imagePath;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setImagePath(ParseFile imagePath) {
-        this.imagePath = imagePath;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public ParseFile getImageFileCat() {
+        return imageFileCat;
+    }
+
+    public void setImageFileCat(ParseFile imageFileCat) {
+        this.imageFileCat = imageFileCat;
     }
 
     public String getCategoryName() {
@@ -28,7 +36,7 @@ public class Category {
 
     public static Category fromParseObject(ParseObject parseObject) {
         Category category = new Category();
-        category.setImagePath(parseObject.getParseFile("ImagePath"));
+        category.setImageFileCat(parseObject.getParseFile("ImagePath"));
         category.setCategoryName(parseObject.getString("CategoryName"));
         return category;
     }

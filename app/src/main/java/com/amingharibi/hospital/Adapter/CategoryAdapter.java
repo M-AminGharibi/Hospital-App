@@ -1,12 +1,15 @@
 package com.amingharibi.hospital.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amingharibi.hospital.Activity.BlogActivity;
 import com.amingharibi.hospital.Domain.Category;
 import com.amingharibi.hospital.R;
 import com.amingharibi.hospital.databinding.ViewholderCategoryBinding;
@@ -39,8 +42,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         // Glide.with(context).load(drawableResourceId).into(holder.pic);
         Category category = items.get(position);
         holder.binding.selectionName.setText(category.getCategoryName());
-
-        ParseFile imagePath = category.getImagePath();
+        ParseFile imagePath = category.getImageFileCat();
         if (imagePath != null) {
             Glide.with(context)
                     .load(imagePath.getUrl())
@@ -48,6 +50,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         } else {
             holder.binding.imgCat.setImageResource(R.drawable.logo); // جایگزین R.drawable.placeholder با تصویری پیش‌فرض
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, BlogActivity.class);
+                //intent.putExtra("object", items.get(position));
+                context.startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
