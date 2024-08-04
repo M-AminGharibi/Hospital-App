@@ -46,17 +46,18 @@ public class BlogActivity extends AppCompatActivity {
         binding.blogView.setLayoutManager(new LinearLayoutManager(BlogActivity.this));
 
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Category");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Blog");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
                     // داده‌ها با موفقیت بازیابی شدند
                     for (ParseObject parseCategory : objects) {
-                        ParseFile imagePath = parseCategory.getParseFile("ImagePath");
-                        String categoryName = parseCategory.getString("CategoryName");
-                        //Blog category = com.amingharibi.hospital.Domain.Category.fromParseObject(parseCategory);
-                       // blogList.add(category);
+                        ParseFile imageFile = parseCategory.getParseFile("ImagePath");
+                        String title = parseCategory.getString("Title");
+                        String text = parseCategory.getString("Text");
+                        Blog blog = com.amingharibi.hospital.Domain.Blog.fromParseObject(parseCategory);
+                        blogList.add(blog);
                     }
                     binding.blogView.setAdapter(new BlogListAdapter(blogList));
                     binding.progressBarBlog.setVisibility(View.GONE);

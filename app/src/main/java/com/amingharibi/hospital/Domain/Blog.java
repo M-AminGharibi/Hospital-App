@@ -1,6 +1,7 @@
 package com.amingharibi.hospital.Domain;
 
 import com.parse.ParseFile;
+import com.parse.ParseObject;
 
 public class Blog {
     private int categoryId;
@@ -42,4 +43,13 @@ public class Blog {
     public void setImageFileBlog(ParseFile imageFileBlog) {
         this.imageFileBlog = imageFileBlog;
     }
+
+    public static Blog fromParseObject(ParseObject parseObject) {
+        Blog blog = new Blog();
+        blog.setImageFileBlog(parseObject.getParseFile("ImagePath"));
+        blog.setTitle(parseObject.getString("Title"));
+        blog.setDescTxt(parseObject.getString("Text"));
+        return blog;
+    }
+
 }
