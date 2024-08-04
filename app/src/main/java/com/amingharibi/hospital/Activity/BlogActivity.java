@@ -52,11 +52,11 @@ public class BlogActivity extends AppCompatActivity {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
                     // داده‌ها با موفقیت بازیابی شدند
-                    for (ParseObject parseCategory : objects) {
-                        ParseFile imageFile = parseCategory.getParseFile("ImagePath");
-                        String title = parseCategory.getString("Title");
-                        String text = parseCategory.getString("Text");
-                        Blog blog = com.amingharibi.hospital.Domain.Blog.fromParseObject(parseCategory);
+                    for (ParseObject parseBlog : objects) {
+                        ParseFile imageFile = parseBlog.getParseFile("ImagePath");
+                        String title = parseBlog.getString("Title");
+                        String text = parseBlog.getString("Text");
+                        Blog blog = com.amingharibi.hospital.Domain.Blog.fromParseObject(parseBlog);
                         blogList.add(blog);
                     }
                     binding.blogView.setAdapter(new BlogListAdapter(blogList));
