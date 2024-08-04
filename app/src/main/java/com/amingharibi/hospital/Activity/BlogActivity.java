@@ -43,12 +43,19 @@ public class BlogActivity extends AppCompatActivity {
 
         getIntentExtra();
         initBlogList();
+
+
     }
 
     private void getIntentExtra() {
         categoryId = getIntent().getIntExtra("CategoryId",0);
       // categoryName = getIntent().getStringExtra("CategoryName");
-
+        binding.backButtonBlog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 
@@ -70,6 +77,11 @@ public class BlogActivity extends AppCompatActivity {
                             String title = parseBlog.getString("Title");
                             String text = parseBlog.getString("Text");
                             Blog blog = com.amingharibi.hospital.Domain.Blog.fromParseObject(parseBlog);
+                            blogList.add(blog);
+                        }else {
+                            Blog blog = new Blog();
+                            String title = "مقاله ای وجود ندارد";
+                            blog.setTitle(title);
                             blogList.add(blog);
                         }
 

@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MainActivity">
+    tools:context=".Activity.MainActivity"
+    android:background="@color/white_background">
 
     <LinearLayout
         android:id="@+id/linear_logo"
@@ -30,8 +31,8 @@
         android:id="@+id/editTextText3"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginTop="16dp"
         android:drawablePadding="8dp"
         android:padding="16dp"
