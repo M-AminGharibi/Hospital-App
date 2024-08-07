@@ -50,7 +50,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.ViewHo
                     .load(imagePath.getUrl())
                     .into(holder.binding.imgBlog);
         } else {
-            holder.binding.imgBlog.setImageResource(R.drawable.logo); // جایگزین R.drawable.placeholder با تصویری پیش‌فرض
+            holder.binding.imgBlog.setImageResource(R.drawable.bicycle); // جایگزین R.drawable.placeholder با تصویری پیش‌فرض
         }
 
 
@@ -60,8 +60,10 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.ViewHo
                 if (imagePath != null) {
                     Intent intent = new Intent(context, DetailActivity.class);
                     int adapterPosition = holder.getAdapterPosition();
-                    intent.putExtra("CategoryId", items.get(adapterPosition).getCategoryId());
-                    intent.putExtra("Title", items.get(position).getTitle());
+                   // intent.putExtra("CategoryId", items.get(adapterPosition).getCategoryId());
+                    intent.putExtra("Title", items.get(adapterPosition).getTitle());
+                    intent.putExtra("Text", items.get(adapterPosition).getDescTxt());
+                    intent.putExtra("ImageFile", items.get(adapterPosition).getImageFileBlog());
                     context.startActivity(intent);
                 }
 
