@@ -46,12 +46,7 @@ public class SectionActivity extends AppCompatActivity {
         if (fullList != null) {
             binding.progressBarSection.setVisibility(View.GONE);
         }
-        binding.backButtonSection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        binding.backButtonSection.setOnClickListener(view -> finish());
 
     }
 }

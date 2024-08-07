@@ -50,12 +50,7 @@ public class BlogActivity extends AppCompatActivity {
     private void getIntentExtra() {
         categoryId = getIntent().getIntExtra("CategoryId",0);
       // categoryName = getIntent().getStringExtra("CategoryName");
-        binding.backButtonBlog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        binding.backButtonBlog.setOnClickListener(view -> finish());
 
     }
 

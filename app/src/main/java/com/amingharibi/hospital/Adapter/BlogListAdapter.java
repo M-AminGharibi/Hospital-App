@@ -43,7 +43,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.ViewHo
     public void onBindViewHolder(@NonNull BlogListAdapter.ViewHolder holder, int position) {
         Blog blog = items.get(position);
         holder.binding.descTxt.setText(blog.getDescTxt());
-        holder.binding.titleBlog.setText(blog.getTitle() );
+        holder.binding.titleBlog.setText(blog.getTitle());
         ParseFile imagePath = blog.getImageFileBlog();
         if (imagePath != null) {
             Glide.with(context)
@@ -57,11 +57,14 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailActivity.class);
-//                int adapterPosition = holder.getAdapterPosition();
-//                intent.putExtra("CategoryId", items.get(adapterPosition).getCategoryId());
-                //intent.putExtra("CategoryName", items.get(position).getCategoryName());
-                context.startActivity(intent);
+                if (imagePath != null) {
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    int adapterPosition = holder.getAdapterPosition();
+                    intent.putExtra("CategoryId", items.get(adapterPosition).getCategoryId());
+                    intent.putExtra("Title", items.get(position).getTitle());
+                    context.startActivity(intent);
+                }
+
             }
         });
 
