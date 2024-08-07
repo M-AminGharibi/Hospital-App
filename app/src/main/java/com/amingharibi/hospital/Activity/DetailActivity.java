@@ -18,10 +18,11 @@ import com.parse.ParseFile;
 
 public class DetailActivity extends AppCompatActivity {
     ActivityDetailBinding binding;
-private String title;
+    private String title;
     private int categoryId;
     private String text;
-  private   ParseFile imageFile;
+    private ParseFile imageFile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +30,9 @@ private String title;
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        binding.backButtonDetail.setOnClickListener(view1 -> finish());
 
+
+        binding.backButtonDetail.setOnClickListener(view1 -> finish());
 
         getIntentExtra();
         setVariable();
@@ -49,12 +51,11 @@ private String title;
     }
 
     private void getIntentExtra() {
-       // categoryId = getIntent().getIntExtra("CategoryId",0);
+        // categoryId = getIntent().getIntExtra("CategoryId",0);
 
         title = getIntent().getStringExtra("Title");
         text = getIntent().getStringExtra("Text");
         imageFile = getIntent().getParcelableExtra("ImageFile");
-
 
 
     }

@@ -67,6 +67,7 @@
 
             <ImageView
                 android:id="@+id/imgDetail"
+                android:layout_margin="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/bicycle" />
@@ -75,6 +76,9 @@
                 android:id="@+id/descTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_margin="16dp"
+                android:textSize="18sp"
                 android:text="TextView" />
         </LinearLayout>
     </ScrollView>
