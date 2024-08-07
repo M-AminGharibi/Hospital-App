@@ -39,7 +39,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.ViewHo
     public void onBindViewHolder(@NonNull BlogListAdapter.ViewHolder holder, int position) {
         Blog blog = items.get(position);
         holder.binding.descTxt.setText(blog.getDescTxt());
-        holder.binding.titleBlog.setText(blog.getTitle());
+        holder.binding.titleBlog.setText(blog.getTitle() );
         ParseFile imagePath = blog.getImageFileBlog();
         if (imagePath != null) {
             Glide.with(context)
