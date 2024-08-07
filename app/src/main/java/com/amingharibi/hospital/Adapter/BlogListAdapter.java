@@ -1,12 +1,16 @@
 package com.amingharibi.hospital.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amingharibi.hospital.Activity.BlogActivity;
+import com.amingharibi.hospital.Activity.DetailActivity;
 import com.amingharibi.hospital.Domain.Blog;
 import com.amingharibi.hospital.Domain.Category;
 import com.amingharibi.hospital.R;
@@ -50,7 +54,16 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.ViewHo
         }
 
 
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailActivity.class);
+//                int adapterPosition = holder.getAdapterPosition();
+//                intent.putExtra("CategoryId", items.get(adapterPosition).getCategoryId());
+                //intent.putExtra("CategoryName", items.get(position).getCategoryName());
+                context.startActivity(intent);
+            }
+        });
 
 
     }
