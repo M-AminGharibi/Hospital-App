@@ -23,7 +23,7 @@
             android:name=".Activity.BlogActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.SectionActivity"
+            android:name=".Activity.CategoryActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.MainActivity"

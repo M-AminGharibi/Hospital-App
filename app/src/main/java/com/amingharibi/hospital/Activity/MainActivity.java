@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         binding.seeAllTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SectionActivity.class);
+                Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
                 DataHolder.getInstance().setFullList(fullList);
                 startActivity(intent);
             }

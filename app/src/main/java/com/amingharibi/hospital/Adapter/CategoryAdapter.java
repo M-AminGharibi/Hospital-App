@@ -10,20 +10,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amingharibi.hospital.Activity.BlogActivity;
+import com.amingharibi.hospital.Domain.Blog;
 import com.amingharibi.hospital.Domain.Category;
 import com.amingharibi.hospital.R;
 import com.amingharibi.hospital.databinding.ViewholderCategoryBinding;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
     private List<Category> items;
+    private List<Category> filteredItems;
     private Context context;
 
     public CategoryAdapter(List<Category> items) {
         this.items = items;
+        this.filteredItems = new ArrayList<>(items);
     }
 
     @NonNull
@@ -40,7 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         // holder.selectionName.setText(items.get(position).getCategoryName());
         // int drawableResourceId = context.getResources().getIdentifier(String.valueOf(items.get(position).getImagePath()), "drawable", holder.itemView.getContext().getPackageName());
         // Glide.with(context).load(drawableResourceId).into(holder.pic);
-        Category category = items.get(position);
+        Category category = filteredItems.get(position);
         holder.binding.selectionName.setText(category.getCategoryName());
         ParseFile imagePath = category.getImageFileCat();
         if (imagePath != null) {
@@ -66,8 +70,24 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return filteredItems.size();
     }
+
+    // متدی برای فیلتر کردن داده‌ها بر اساس ورودی کاربر
+    public void filter(String query) {
+        filteredItems.clear();
+        if (query.isEmpty()) {
+            filteredItems.addAll(items); // اگر جستجو خالی باشد، همه آیتم‌ها نمایش داده می‌شود
+        } else {
+            for (Category category : items) {
+                if (category.getCategoryName().toLowerCase().contains(query.toLowerCase())) {
+                    filteredItems.add(category);
+                }
+            }
+        }
+        notifyDataSetChanged(); // برای به‌روزرسانی RecyclerView
+    }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ViewholderCategoryBinding binding;

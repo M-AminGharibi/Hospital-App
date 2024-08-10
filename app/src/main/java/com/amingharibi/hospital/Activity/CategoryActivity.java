@@ -1,7 +1,8 @@
 package com.amingharibi.hospital.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -11,19 +12,19 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.amingharibi.hospital.Adapter.CategoryAdapter;
 import com.amingharibi.hospital.Domain.Category;
 import com.amingharibi.hospital.Domain.DataHolder;
-import com.amingharibi.hospital.databinding.ActivitySectionBinding;
+import com.amingharibi.hospital.databinding.ActivityCategoryBinding;
 
 import java.util.List;
 
-public class SectionActivity extends AppCompatActivity {
-    ActivitySectionBinding binding;
+public class CategoryActivity extends AppCompatActivity {
+    ActivityCategoryBinding binding;
     List<Category> fullList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        binding = ActivitySectionBinding.inflate(getLayoutInflater());
+        binding = ActivityCategoryBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -33,6 +34,28 @@ public class SectionActivity extends AppCompatActivity {
         fullList = DataHolder.getInstance().getFullList();
 
         initCategorySection();
+
+
+        binding.searchBarCat.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //blogListAdapter.filter(s.toString());
+                CategoryAdapter adapter = (CategoryAdapter) binding.sectionView.getAdapter();
+                if (adapter != null) {
+                    adapter.filter(charSequence.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
 
 
