@@ -5,19 +5,11 @@ import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.amingharibi.hospital.Adapter.BlogListAdapter;
-import com.amingharibi.hospital.Adapter.CategoryAdapter;
 import com.amingharibi.hospital.Domain.Blog;
-import com.amingharibi.hospital.Domain.Category;
-import com.amingharibi.hospital.R;
 import com.amingharibi.hospital.databinding.ActivityBlogBinding;
-import com.amingharibi.hospital.databinding.ActivityMainBinding;
-import com.amingharibi.hospital.databinding.ActivitySectionBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
