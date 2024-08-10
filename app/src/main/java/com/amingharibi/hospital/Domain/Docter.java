@@ -1,15 +1,18 @@
 package com.amingharibi.hospital.Domain;
 
 import com.parse.ParseFile;
-import com.parse.ParseObject;
 
-public class Category {
+public class Docter {
     private int categoryId;
     private ParseFile imageFileCat;
     private String categoryName;
+    private String docterName;
+    private String docterTime;
 
-    public Category() {
+    public Docter() {
     }
+
+
     public int getCategoryId() {
         return categoryId;
     }
@@ -34,12 +37,19 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public static Category fromParseObject(ParseObject parseObject) {
-        Category category = new Category();
-        category.setImageFileCat(parseObject.getParseFile("ImagePath"));
-        category.setCategoryId(parseObject.getInt("CategoryId"));
-        category.setCategoryName(parseObject.getString("CategoryName"));
-        return category;
+    public String getDocterName() {
+        return docterName;
     }
 
+    public void setDocterName(String docterName) {
+        this.docterName = docterName;
+    }
+
+    public String getDocterTime() {
+        return docterTime;
+    }
+
+    public void setDocterTime(String docterTime) {
+        this.docterTime = docterTime;
+    }
 }
