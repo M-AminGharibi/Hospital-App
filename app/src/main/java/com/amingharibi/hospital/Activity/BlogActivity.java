@@ -37,6 +37,7 @@ public class BlogActivity extends AppCompatActivity {
         binding = ActivityBlogBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        binding.progressBar2.setVisibility(View.VISIBLE);
         blogList = new ArrayList<>();
         doctorListCat = new ArrayList<>();
 
@@ -55,15 +56,17 @@ public class BlogActivity extends AppCompatActivity {
             int categoryIdDoctor = doctor.getCategoryId();
             if (categoryId == categoryIdDoctor) {
                 doctorListCat.add(doctor);
-            } else {
-                Doctor doctor1 = new Doctor();
-                doctor1.setDoctorName("پزشکی وحود ندارد");
-                doctorListCat.add(doctor1);
             }
+        }
+        if (doctorListCat.isEmpty()) {
+            Doctor doctor1 = new Doctor();
+            doctor1.setDoctorName("پزشکی وحود ندارد");
+            doctorListCat.add(doctor1);
         }
 
         binding.doctorViewBlog.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         binding.doctorViewBlog.setAdapter(new DoctorAdapter(doctorListCat));
+        binding.progressBar2.setVisibility(View.GONE);
 
 
     }
