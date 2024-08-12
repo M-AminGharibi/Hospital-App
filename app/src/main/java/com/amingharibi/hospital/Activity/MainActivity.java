@@ -48,15 +48,18 @@ public class MainActivity extends AppCompatActivity {
         initCategoryMain();
         initDoctorMain();
 
+
+        DoctorDataHolder.getInstance().setFullList(fullListDoc);
+        CategoryDataHolder.getInstance().setFullList(fullListCat);
+
         binding.seeAllDocTV.setOnClickListener(view12 -> {
             Intent intent = new Intent(MainActivity.this, DoctorActivity.class);
-            DoctorDataHolder.getInstance().setFullList(fullListDoc);
+
             startActivity(intent);
         });
 
         binding.seeAllCatTV.setOnClickListener(view1 -> {
             Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
-            CategoryDataHolder.getInstance().setFullList(fullListCat);
             startActivity(intent);
         });
 
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 if (e == null) {
                     // داده‌ها با موفقیت بازیابی شدند
                     for (ParseObject parseDoctor : objects) {
+                        int categoryIdDoctor = parseDoctor.getInt("CategoryId");
                         ParseFile imagePath = parseDoctor.getParseFile("ImageDoc");
                         String categoryName = parseDoctor.getString("Category");
                         String doctorName = parseDoctor.getString("FullName");

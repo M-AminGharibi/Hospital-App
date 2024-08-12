@@ -8,7 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.amingharibi.hospital.Adapter.BlogListAdapter;
+import com.amingharibi.hospital.Adapter.DoctorAdapter;
 import com.amingharibi.hospital.Domain.Blog;
+import com.amingharibi.hospital.Domain.Doctor;
+import com.amingharibi.hospital.Domain.DoctorDataHolder;
 import com.amingharibi.hospital.databinding.ActivityBlogBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -23,7 +26,10 @@ public class BlogActivity extends AppCompatActivity {
     ActivityBlogBinding binding;
     List<Blog> blogList;
     private int categoryId;
+    List<Doctor> doctorList;
+    List<Doctor> doctorListCat;
     private String categoryName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,16 +38,39 @@ public class BlogActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         blogList = new ArrayList<>();
+        doctorListCat = new ArrayList<>();
+
+
+        doctorList = DoctorDataHolder.getInstance().getFullList();
 
         getIntentExtra();
         initBlogList();
+        initDoctorList();
+
+
+    }
+
+    private void initDoctorList() {
+        for (Doctor doctor : doctorList) {
+            int categoryIdDoctor = doctor.getCategoryId();
+            if (categoryId == categoryIdDoctor) {
+                doctorListCat.add(doctor);
+            } else {
+                Doctor doctor1 = new Doctor();
+                doctor1.setDoctorName("پزشکی وحود ندارد");
+                doctorListCat.add(doctor1);
+            }
+        }
+
+        binding.doctorViewBlog.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        binding.doctorViewBlog.setAdapter(new DoctorAdapter(doctorListCat));
 
 
     }
 
     private void getIntentExtra() {
-        categoryId = getIntent().getIntExtra("CategoryId",0);
-      // categoryName = getIntent().getStringExtra("CategoryName");
+        categoryId = getIntent().getIntExtra("CategoryId", 0);
+        // categoryName = getIntent().getStringExtra("CategoryName");
         binding.backButtonBlog.setOnClickListener(view -> finish());
 
     }
@@ -65,7 +94,7 @@ public class BlogActivity extends AppCompatActivity {
                             String text = parseBlog.getString("Text");
                             Blog blog = com.amingharibi.hospital.Domain.Blog.fromParseObject(parseBlog);
                             blogList.add(blog);
-                        }else {
+                        } else {
                             Blog blog = new Blog();
                             String title = "مقاله ای وجود ندارد";
                             blog.setTitle(title);
@@ -84,7 +113,6 @@ public class BlogActivity extends AppCompatActivity {
 
 
     }
-
 
 
 }

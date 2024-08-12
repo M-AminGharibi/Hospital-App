@@ -57,6 +57,7 @@ public class Doctor {
 
     public static Doctor fromParseObject(ParseObject parseObject) {
         Doctor doctor = new Doctor();
+        doctor.setCategoryId(parseObject.getInt("CategoryId"));
         doctor.setImageFileDoc(parseObject.getParseFile("ImageDoc"));
         doctor.setCategoryName(parseObject.getString("Category"));
         doctor.setDoctorName(parseObject.getString("FullName"));
