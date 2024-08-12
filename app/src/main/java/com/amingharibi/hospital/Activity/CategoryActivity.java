@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.amingharibi.hospital.Adapter.CategoryAdapter;
 import com.amingharibi.hospital.Domain.Category;
-import com.amingharibi.hospital.Domain.DataHolder;
+import com.amingharibi.hospital.Domain.CategoryDataHolder;
 import com.amingharibi.hospital.databinding.ActivityCategoryBinding;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class CategoryActivity extends AppCompatActivity {
 
         binding.progressBarSection.setVisibility(View.VISIBLE);
 
-        fullList = DataHolder.getInstance().getFullList();
+        fullList = CategoryDataHolder.getInstance().getFullList();
 
         initCategorySection();
 

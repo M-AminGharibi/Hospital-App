@@ -2,15 +2,15 @@ package com.amingharibi.hospital.Domain;
 
 import java.util.List;
 
-public class DataHolder {
-    private static DataHolder instance;
+public class CategoryDataHolder {
+    private static CategoryDataHolder instance;
     private List<Category> fullList;
 
-    private DataHolder() {}
+    private CategoryDataHolder() {}
 
-    public static synchronized DataHolder getInstance() {
+    public static synchronized CategoryDataHolder getInstance() {
         if (instance == null) {
-            instance = new DataHolder();
+            instance = new CategoryDataHolder();
         }
         return instance;
     }

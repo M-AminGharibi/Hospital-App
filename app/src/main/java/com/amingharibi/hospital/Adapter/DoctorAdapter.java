@@ -15,6 +15,8 @@ import com.amingharibi.hospital.R;
 import com.amingharibi.hospital.databinding.ViewholderCategoryBinding;
 import com.amingharibi.hospital.databinding.ViewholderDoctorBinding;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.parse.ParseFile;
 
 import java.util.ArrayList;
@@ -49,6 +51,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
         if (imagePath != null) {
             Glide.with(context)
                     .load(imagePath.getUrl())
+                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(16)))
                     .into(holder.binding.imgDoc);
         } else {
             holder.binding.imgDoc.setImageResource(R.drawable.logo); // جایگزین R.drawable.placeholder با تصویری پیش‌فرض
@@ -66,7 +69,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
             filteredItems.addAll(items); // اگر جستجو خالی باشد، همه آیتم‌ها نمایش داده می‌شود
         } else {
             for (Doctor doctor : items) {
-                if (doctor.getCategoryName().toLowerCase().contains(query.toLowerCase())) {
+                if (doctor.getCategoryName().toLowerCase().contains(query.toLowerCase()) ||
+                        doctor.getDoctorName().toLowerCase().contains(query.toLowerCase())) {
                     filteredItems.add(doctor);
                 }
             }

@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.amingharibi.hospital.Adapter.CategoryAdapter;
 import com.amingharibi.hospital.Adapter.DoctorAdapter;
 import com.amingharibi.hospital.Domain.Category;
-import com.amingharibi.hospital.Domain.DataHolder;
+import com.amingharibi.hospital.Domain.CategoryDataHolder;
 import com.amingharibi.hospital.Domain.Doctor;
+import com.amingharibi.hospital.Domain.DoctorDataHolder;
 import com.amingharibi.hospital.databinding.ActivityMainBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -47,9 +48,15 @@ public class MainActivity extends AppCompatActivity {
         initCategoryMain();
         initDoctorMain();
 
+        binding.seeAllDocTV.setOnClickListener(view12 -> {
+            Intent intent = new Intent(MainActivity.this, DoctorActivity.class);
+            DoctorDataHolder.getInstance().setFullList(fullListDoc);
+            startActivity(intent);
+        });
+
         binding.seeAllCatTV.setOnClickListener(view1 -> {
             Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
-            DataHolder.getInstance().setFullList(fullListCat);
+            CategoryDataHolder.getInstance().setFullList(fullListCat);
             startActivity(intent);
         });
 
