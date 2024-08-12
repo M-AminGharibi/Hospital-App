@@ -7,10 +7,13 @@ import android.view.View;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.amingharibi.hospital.Adapter.CategoryAdapter;
+import com.amingharibi.hospital.Adapter.DoctorAdapter;
 import com.amingharibi.hospital.Domain.Category;
 import com.amingharibi.hospital.Domain.DataHolder;
+import com.amingharibi.hospital.Domain.Doctor;
 import com.amingharibi.hospital.databinding.ActivityMainBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -24,8 +27,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
-    List<Category> fullList;
-    List<Category> limitedList;
+    List<Category> fullListCat;
+    List<Category> limitedListCat;
+    List<Doctor> fullListDoc;
+    List<Doctor> limitedListDoc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +40,50 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        fullList = new ArrayList<>();
+        fullListCat = new ArrayList<>();
+        fullListDoc = new ArrayList<>();
 
 
         initCategoryMain();
+        initDoctorMain();
 
-        binding.seeAllTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
-                DataHolder.getInstance().setFullList(fullList);
-                startActivity(intent);
-            }
+        binding.seeAllCatTV.setOnClickListener(view1 -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            DataHolder.getInstance().setFullList(fullListCat);
+            startActivity(intent);
         });
 
+
+    }
+
+    private void initDoctorMain() {
+        binding.progressBarDoctor.setVisibility(View.VISIBLE);
+        binding.doctorView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Docters");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    // داده‌ها با موفقیت بازیابی شدند
+                    for (ParseObject parseDoctor : objects) {
+                        ParseFile imagePath = parseDoctor.getParseFile("ImageDoc");
+                        String categoryName = parseDoctor.getString("Category");
+                        String doctorName = parseDoctor.getString("FullName");
+                        String doctorTime = parseDoctor.getString("Dates");
+                        Doctor doctor = Doctor.fromParseObject(parseDoctor);
+                        fullListDoc.add(doctor);
+                    }
+                    limitedListDoc = getLimitedList(fullListDoc, 4);
+                    binding.doctorView.setAdapter(new DoctorAdapter(limitedListDoc));
+                    binding.progressBarDoctor.setVisibility(View.GONE);
+                } else {
+                    // خطا در بازیابی داده‌ها
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
 
@@ -67,11 +102,11 @@ public class MainActivity extends AppCompatActivity {
                         int categoryIdParse = parseCategory.getInt("CategoryId");
                         ParseFile imagePath = parseCategory.getParseFile("ImagePath");
                         String categoryName = parseCategory.getString("CategoryName");
-                        Category category = com.amingharibi.hospital.Domain.Category.fromParseObject(parseCategory);
-                        fullList.add(category);
+                        Category category = Category.fromParseObject(parseCategory);
+                        fullListCat.add(category);
                     }
-                    limitedList = getLimitedList(fullList, 4);
-                    binding.categoryView.setAdapter(new CategoryAdapter(limitedList));
+                    limitedListCat = getLimitedList(fullListCat, 4);
+                    binding.categoryView.setAdapter(new CategoryAdapter(limitedListCat));
                     binding.progressBarCategory.setVisibility(View.GONE);
                 } else {
                     // خطا در بازیابی داده‌ها
@@ -83,12 +118,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private List<Category> getLimitedList(List<Category> originalList, int limit) {
+    private <T> List<T> getLimitedList(List<T> originalList, int limit) {
         if (originalList.size() <= limit) {
             return new ArrayList<>(originalList);
         } else {
             return new ArrayList<>(originalList.subList(0, limit));
         }
     }
+
 
 }

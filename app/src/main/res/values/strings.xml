@@ -6,6 +6,7 @@
     <string name="seeAll">نمایش همه</string>
     <string name="blogs">همه مقالات</string>
     <string name="all_section">همه بخش ها</string>
+    <string name="Doctors_visit">حضور پزشکان</string>
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>
     <!-- Paste BOTH strings as required -->
     <string name="back4app_app_id">SMgAsMmWSfOECmXrQ9bjn4JwxPPo8lGFqeoQaKhH</string>
