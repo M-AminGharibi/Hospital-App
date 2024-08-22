@@ -8,15 +8,6 @@
     android:layout_margin="8dp">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
         <ImageView
             android:id="@+id/imgDoc"
             android:layout_width="60dp"
@@ -78,6 +69,6 @@
             app:layout_constraintEnd_toEndOf="@+id/view2"
             app:layout_constraintTop_toTopOf="@+id/view2" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,10 @@ package com.amingharibi.hospital.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,7 @@ import com.amingharibi.hospital.Domain.Category;
 import com.amingharibi.hospital.Domain.CategoryDataHolder;
 import com.amingharibi.hospital.Domain.Doctor;
 import com.amingharibi.hospital.Domain.DoctorDataHolder;
+import com.amingharibi.hospital.R;
 import com.amingharibi.hospital.databinding.ActivityMainBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -61,6 +65,35 @@ public class MainActivity extends AppCompatActivity {
         binding.seeAllCatTV.setOnClickListener(view1 -> {
             Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
             startActivity(intent);
+        });
+
+        binding.searchBarMain.setOnClickListener(v -> {
+            SearchFragment searchFragment = new SearchFragment();
+            binding.fragmentContainer.bringToFront();
+
+            getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(R.anim.slide_up, R.anim.slide_down, R.anim.slide_up, R.anim.slide_down)
+                    .replace(R.id.fragment_container, searchFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
+
+        binding.searchBarMain.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
         });
 
 
