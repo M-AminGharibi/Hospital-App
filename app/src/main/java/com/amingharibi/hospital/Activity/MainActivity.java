@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initDoctorMain() {
         binding.progressBarDoctor.setVisibility(View.VISIBLE);
-        binding.doctorView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+        binding.doctorView.setLayoutManager(new LinearLayoutManager(MainActivity.this ,LinearLayoutManager.HORIZONTAL ,false));
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Docters");

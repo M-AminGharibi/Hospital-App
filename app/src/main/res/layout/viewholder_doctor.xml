@@ -8,66 +8,76 @@
     android:layout_margin="8dp">
 
 
-    <ImageView
-        android:id="@+id/imgDoc"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/white_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-
-    <TextView
-        android:id="@+id/doctorName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/imgDoc"
-        app:layout_constraintTop_toTopOf="@+id/imgDoc" />
-
-    <TextView
-        android:id="@+id/docterCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textColor="@color/light_purple_background"
-        app:layout_constraintEnd_toStartOf="@+id/imgDoc"
-        app:layout_constraintTop_toBottomOf="@+id/doctorName" />
-
-    <View
-        android:id="@+id/view2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="75sp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/light_purple_bg"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgDoc" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/doctorTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:drawableEnd="@drawable/time"
-        android:drawablePadding="8dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2"
-        app:layout_constraintVertical_bias="0.506" />
+
+        <ImageView
+            android:id="@+id/imgDoc"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/white_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+
+        <TextView
+            android:id="@+id/doctorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/imgDoc"
+            app:layout_constraintTop_toTopOf="@+id/imgDoc" />
+
+        <TextView
+            android:id="@+id/docterCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            android:textColor="@color/light_purple_background"
+            app:layout_constraintEnd_toStartOf="@+id/imgDoc"
+            app:layout_constraintTop_toBottomOf="@+id/doctorName" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="75sp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/light_purple_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgDoc" />
+
+        <TextView
+            android:id="@+id/doctorTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:drawableEnd="@drawable/time"
+            android:drawablePadding="8dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintTop_toTopOf="@+id/view2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
