@@ -9,6 +9,8 @@ import android.view.animation.AnimationUtils;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -67,41 +69,22 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.searchBarMain.setOnClickListener(v -> {
-            SearchFragment searchFragment = new SearchFragment();
-            binding.fragmentContainer.bringToFront();
-
-            getSupportFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.anim.slide_up, R.anim.slide_down, R.anim.slide_up, R.anim.slide_down)
-                    .replace(R.id.fragment_container, searchFragment)
-                    .addToBackStack(null)
-                    .commit();
-        });
-
-        binding.searchBarMain.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        binding.searchBarMain.setOnClickListener(v -> openSearchFragment());
 
 
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+        binding.searchBarMain.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                openSearchFragment();
             }
         });
 
 
     }
 
+
     private void initDoctorMain() {
         binding.progressBarDoctor.setVisibility(View.VISIBLE);
-        binding.doctorView.setLayoutManager(new LinearLayoutManager(MainActivity.this ,LinearLayoutManager.HORIZONTAL ,false));
+        binding.doctorView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Docters");
@@ -170,5 +153,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    private void openSearchFragment() {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment searchFragment = fragmentManager.findFragmentByTag("SEARCH_FRAGMENT");
+        binding.fragmentContainer.bringToFront();
+        if (searchFragment == null) {
+            // Fragment is not already opened, so open it
+            searchFragment = new SearchFragment();
+            fragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.slide_up, R.anim.slide_down, 0,0)
+                    .replace(R.id.fragment_container, searchFragment, "SEARCH_FRAGMENT")
+                    .addToBackStack(null)
+                    .commit();
+        }
+
+
+    }
 
 }
