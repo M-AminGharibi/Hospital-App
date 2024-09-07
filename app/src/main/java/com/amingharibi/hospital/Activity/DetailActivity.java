@@ -1,6 +1,7 @@
 
 package com.amingharibi.hospital.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -22,6 +23,8 @@ public class DetailActivity extends AppCompatActivity {
     private int categoryId;
     private String text;
     private ParseFile imageFile;
+    String articleTitle;
+    String articleContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +37,28 @@ public class DetailActivity extends AppCompatActivity {
 
         binding.backButtonDetail.setOnClickListener(view1 -> finish());
 
+
+
+        binding.shareBtn.setOnClickListener(v -> shareArticle(articleTitle, articleContent));
+
         getIntentExtra();
         setVariable();
+        articleTitle = binding.titleDetail.getText().toString();
+        articleContent = binding.descTxt.getText().toString();
 
+    }
 
+    private void shareArticle(String title, String content) {
+        // ترکیب عنوان و محتوا
+        String shareText = title + "\n\n" + content;
+
+        // ساخت Intent برای اشتراک‌گذاری
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+
+        // نمایش دیالوگ انتخاب برنامه برای اشتراک‌گذاری
+        startActivity(Intent.createChooser(shareIntent, "Share via"));
     }
 
     private void setVariable() {

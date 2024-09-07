@@ -36,13 +36,13 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintEnd_toStartOf="@+id/shareBtn"
             app:layout_constraintStart_toEndOf="@+id/back_button_Detail"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="نام مقاله" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/shareBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

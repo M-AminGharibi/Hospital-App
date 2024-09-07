@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.amingharibi.hospital.Adapter.CategoryAdapter;
 import com.amingharibi.hospital.Adapter.DoctorAdapter;
@@ -78,6 +79,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        binding.searchBarMain.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                RecyclerView recyclerViewDoctorsSearch = findViewById(R.id.recyclerViewDoctorsSearch);
+                RecyclerView recyclerViewCategorySearch = findViewById(R.id.recyclerViewCategorySearch);
+
+                DoctorAdapter doctorAdapter = (DoctorAdapter) recyclerViewDoctorsSearch.getAdapter();
+                CategoryAdapter categoryAdapter = (CategoryAdapter) recyclerViewCategorySearch.getAdapter();
+                if (doctorAdapter != null || categoryAdapter != null) {
+                    doctorAdapter.filter(binding.searchBarMain.getText().toString());
+                    categoryAdapter.filter(binding.searchBarMain.getText().toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
     }
 
@@ -163,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
             // Fragment is not already opened, so open it
             searchFragment = new SearchFragment();
             fragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.slide_up, R.anim.slide_down, 0,0)
+                    .setCustomAnimations(R.anim.slide_up, R.anim.slide_down, R.anim.slide_up,R.anim.slide_down)
                     .replace(R.id.fragment_container, searchFragment, "SEARCH_FRAGMENT")
                     .addToBackStack(null)
                     .commit();
