@@ -49,15 +49,13 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void shareArticle(String title, String content) {
-        // ترکیب عنوان و محتوا
         String shareText = title + "\n\n" + content;
 
-        // ساخت Intent برای اشتراک‌گذاری
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
 
-        // نمایش دیالوگ انتخاب برنامه برای اشتراک‌گذاری
+
         startActivity(Intent.createChooser(shareIntent, "Share via"));
     }
 

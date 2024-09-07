@@ -56,7 +56,7 @@ public class SearchFragment extends Fragment {
 
     private void setupRecyclerViews() {
 
-        binding.recyclerViewDoctorsSearch.setLayoutManager(new LinearLayoutManager(getContext() , LinearLayoutManager.VERTICAL,false));
+        binding.recyclerViewDoctorsSearch.setLayoutManager(new LinearLayoutManager(getContext() , LinearLayoutManager.HORIZONTAL,false));
         binding.recyclerViewCategorySearch.setLayoutManager(new GridLayoutManager(getContext() , 2));
 
 
