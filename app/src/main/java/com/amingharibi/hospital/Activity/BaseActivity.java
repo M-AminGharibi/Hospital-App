@@ -1,15 +1,12 @@
 package com.amingharibi.hospital.Activity;
 
+import android.app.Application;
+
 import com.amingharibi.hospital.R;
+
 import com.parse.Parse;
 
-import android.app.Application;
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 public class BaseActivity extends Application {
-
 
     @Override
     public void onCreate() {
@@ -22,6 +19,4 @@ public class BaseActivity extends Application {
                 .build());
 
     }
-
-
 }

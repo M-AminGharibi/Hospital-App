@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amingharibi.hospital.Activity.BlogActivity;
-import com.amingharibi.hospital.Domain.Blog;
 import com.amingharibi.hospital.Domain.Category;
 import com.amingharibi.hospital.R;
 import com.amingharibi.hospital.databinding.ViewholderCategoryBinding;

@@ -7,16 +7,11 @@ import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.amingharibi.hospital.Adapter.CategoryAdapter;
 import com.amingharibi.hospital.Adapter.DoctorAdapter;
-import com.amingharibi.hospital.Domain.Category;
-import com.amingharibi.hospital.Domain.CategoryDataHolder;
 import com.amingharibi.hospital.Domain.Doctor;
 import com.amingharibi.hospital.Domain.DoctorDataHolder;
-import com.amingharibi.hospital.R;
 import com.amingharibi.hospital.databinding.ActivityDoctorBinding;
 
 import java.util.List;

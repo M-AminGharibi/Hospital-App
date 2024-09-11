@@ -10,7 +10,6 @@
     <string name="Doctors_visit_list">لیست حضور پزشکان</string>
     <string name="searchResults">نتایج جستجو </string>
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>
-    <!-- Paste BOTH strings as required -->
     <string name="back4app_app_id">SMgAsMmWSfOECmXrQ9bjn4JwxPPo8lGFqeoQaKhH</string>
     <string name="back4app_client_key">nqo7geXGdvWBI7yOsHjvjo44KXsEwHXSuH44pcIM</string>
     <!-- TODO: Remove or change this placeholder text -->

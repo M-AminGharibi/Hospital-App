@@ -2,17 +2,13 @@ package com.amingharibi.hospital.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.amingharibi.hospital.Domain.Category;
 import com.amingharibi.hospital.Domain.Doctor;
 import com.amingharibi.hospital.R;
-import com.amingharibi.hospital.databinding.ViewholderCategoryBinding;
 import com.amingharibi.hospital.databinding.ViewholderDoctorBinding;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;

@@ -7,12 +7,7 @@ import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.amingharibi.hospital.R;
-import com.amingharibi.hospital.databinding.ActivityBlogBinding;
 import com.amingharibi.hospital.databinding.ActivityDetailBinding;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
