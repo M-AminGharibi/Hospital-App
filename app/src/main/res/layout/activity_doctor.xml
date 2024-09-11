@@ -59,7 +59,7 @@
         android:hint="@string/searchBar"
         android:inputType="text"
         android:padding="16dp"
-        android:textColorHint="@color/text_color"
+        android:textColorHint="@color/gray_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/constraintLayoutHeader" />

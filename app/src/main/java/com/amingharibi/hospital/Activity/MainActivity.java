@@ -1,5 +1,6 @@
 package com.amingharibi.hospital.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -109,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("ResourceAsColor")
     private void setupSeeAllText() {
+        binding.searchBarMain.setHintTextColor(R.color.black);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             // برای API 17 و بالاتر
             binding.seeAllCatTV.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.less_than, 0, 0, 0);
