@@ -1,6 +1,7 @@
 package com.amingharibi.hospital.Activity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -50,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
         fullListCat = new ArrayList<>();
         fullListDoc = new ArrayList<>();
 
+        setupSeeAllText();
 
         initCategoryMain();
         initDoctorMain();
+
 
 
         DoctorDataHolder.getInstance().setFullList(fullListDoc);
@@ -103,6 +106,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void setupSeeAllText() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            // برای API 17 و بالاتر
+            binding.seeAllCatTV.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.less_than, 0, 0, 0);
+            binding.seeAllDocTV.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.less_than, 0, 0, 0);
+        } else {
+            // برای API های قدیمی‌تر
+            binding.seeAllCatTV.setCompoundDrawablesWithIntrinsicBounds(R.drawable.less_than, 0, 0, 0);
+            binding.seeAllDocTV.setCompoundDrawablesWithIntrinsicBounds(R.drawable.less_than, 0, 0, 0);
+        }
 
     }
 

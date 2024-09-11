@@ -51,7 +51,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.ViewHo
                     .load(imagePath.getUrl())
                     .into(holder.binding.imgBlog);
         } else {
-            holder.binding.imgBlog.setImageResource(R.drawable.hospital_logo); // جایگزین R.drawable.bicycle با تصویری پیش‌فرض
+            holder.binding.imgBlog.setImageResource(R.mipmap.error_404); // جایگزین R.drawable.bicycle با تصویری پیش‌فرض
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

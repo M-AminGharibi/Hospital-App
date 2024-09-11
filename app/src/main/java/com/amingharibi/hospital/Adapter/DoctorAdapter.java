@@ -50,7 +50,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
                     .apply(RequestOptions.bitmapTransform(new RoundedCorners(16)))
                     .into(holder.binding.imgDoc);
         } else {
-            holder.binding.imgDoc.setImageResource(R.drawable.logo); // جایگزین R.drawable.placeholder با تصویری پیش‌فرض
+            holder.binding.imgDoc.setImageResource(R.mipmap.error_404); // جایگزین R.drawable.placeholder با تصویری پیش‌فرض
+            holder.binding.doctorTime.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.info,0);
         }
     }
 
