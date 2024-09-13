@@ -34,23 +34,22 @@ public class DetailActivity extends AppCompatActivity {
 
 
 
-        binding.shareBtn.setOnClickListener(v -> shareArticle(articleTitle, articleContent));
+
 
         getIntentExtra();
         setVariable();
         articleTitle = binding.titleDetail.getText().toString();
         articleContent = binding.descTxt.getText().toString();
 
+        binding.shareBtn.setOnClickListener(v -> shareArticle(articleTitle, articleContent));
+
     }
 
     private void shareArticle(String title, String content) {
         String shareText = title + "\n\n" + content;
-
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
-
-
         startActivity(Intent.createChooser(shareIntent, "Share via"));
     }
 

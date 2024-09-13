@@ -72,7 +72,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return filteredItems.size();
     }
 
-    // متدی برای فیلتر کردن داده‌ها بر اساس ورودی کاربر
+
     public void filter(String query) {
         filteredItems.clear();
         if (query.isEmpty()) {

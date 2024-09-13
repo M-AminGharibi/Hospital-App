@@ -28,9 +28,6 @@ public class SearchFragment extends Fragment {
     private List<Doctor> doctorFullList = new ArrayList<>();
     private List<Category> categoryFullList = new ArrayList<>();
 
-    List<Doctor> searchDoctorList;
-    List<Category> searchCategoryList;
-
     private DoctorAdapter doctorAdapter;
     private CategoryAdapter categoryAdapter;
 
@@ -68,26 +65,7 @@ public class SearchFragment extends Fragment {
 
 
     }
-//
-//
-//    public void search(String query) {
-//        // جستجو در لیست پزشکان و بخش‌ها و به روز رسانی لیست‌ها
-//        List<Doctor> filteredDoctors = filterDoctors(query);
-//        List<Category> filteredCategories = filterDepartments(query);
-//
-//        doctorAdapter.updateList(filteredDoctors);
-//        categoryAdapter.updateList(filteredDepartments);
-//    }
-//
-//    private List<Doctor> filterDoctors(String query) {
-//        // فیلتر کردن لیست پزشکان بر اساس query
-//        // این بخش به صورت دلخواه پیاده‌سازی می‌شود
-//    }
-//
-//    private List<Category> filterDepartments(String query) {
-//        // فیلتر کردن لیست بخش‌ها بر اساس query
-//        // این بخش به صورت دلخواه پیاده‌سازی می‌شود
-//    }
+
 
     @Override
     public void onDestroyView() {

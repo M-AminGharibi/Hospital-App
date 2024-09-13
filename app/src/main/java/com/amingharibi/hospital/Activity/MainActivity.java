@@ -57,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
         initCategoryMain();
         initDoctorMain();
 
-
-
         DoctorDataHolder.getInstance().setFullList(fullListDoc);
         CategoryDataHolder.getInstance().setFullList(fullListCat);
 
@@ -129,8 +127,6 @@ public class MainActivity extends AppCompatActivity {
     private void initDoctorMain() {
         binding.progressBarDoctor.setVisibility(View.VISIBLE);
         binding.doctorView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
-
-
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Docters");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -162,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
     private void initCategoryMain() {
         binding.progressBarCategory.setVisibility(View.VISIBLE);
         binding.categoryView.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
-
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Category");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -185,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
 
@@ -199,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void openSearchFragment() {
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment searchFragment = fragmentManager.findFragmentByTag("SEARCH_FRAGMENT");
         binding.fragmentContainer.bringToFront();
@@ -212,8 +205,6 @@ public class MainActivity extends AppCompatActivity {
                     .addToBackStack(null)
                     .commit();
         }
-
-
     }
 
 }

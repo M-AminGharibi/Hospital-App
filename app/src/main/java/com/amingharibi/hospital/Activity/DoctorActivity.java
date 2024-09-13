@@ -57,10 +57,7 @@ public class DoctorActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
-
     private void initDoctorSection() {
 
         binding.doctorView.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.VERTICAL,false));
@@ -70,6 +67,4 @@ public class DoctorActivity extends AppCompatActivity {
         }
         binding.backButtonDoctor.setOnClickListener(view1 -> finish());
     }
-
-
 }
